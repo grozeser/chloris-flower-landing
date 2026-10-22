@@ -15,6 +15,12 @@ python -m http.server 5500
 
 Затем открыть http://localhost:5500.
 
+Тесты проверки полей формы (Node 18+):
+
+```bash
+node --test
+```
+
 ## Статус
 
 - [x] Этап 0. Каркас
@@ -22,7 +28,7 @@ python -m http.server 5500
 - [x] Этап 2. Тексты (`docs/copy.md`)
 - [x] Этап 3. Разметка (`index.html`)
 - [x] Этап 4. Стили и адаптив (`css/style.css`)
-- [ ] Этап 5. JS
+- [x] Этап 5. JS (`js/main.js`, `js/validate.js`)
 - [ ] Этап 6. Изображения
 - [ ] Этап 7. Проверка
 - [ ] Этап 8. Выкладка на GitHub Pages

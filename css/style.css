@@ -285,7 +285,7 @@ p a { color: var(--color-primary); text-underline-offset: 0.2em; }
 }
 .filter__btn[aria-pressed="true"] { background: var(--color-primary); color: var(--color-on-primary); }
 @media (hover: hover) {
-  .filter__btn:hover, .reviews__btn:hover { background: var(--color-accent-soft); }
+  .filter__btn:hover, .reviews__btn:hover:not(:disabled) { background: var(--color-accent-soft); }
   .filter__btn[aria-pressed="true"]:hover { background: var(--color-primary-hover); }
 }
 .catalog { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-3); margin: 0; padding: 0; list-style: none; }
@@ -347,6 +347,7 @@ p a { color: var(--color-primary); text-underline-offset: 0.2em; }
 }
 
 /* Отзывы: горизонтальная прокрутка с прилипанием */
+.reviews__btn:disabled { opacity: 0.4; cursor: not-allowed; }
 .reviews__controls { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-4); }
 .reviews {
   overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin;
@@ -419,6 +420,13 @@ p a { color: var(--color-primary); text-underline-offset: 0.2em; }
   .site-footer .nav__list { justify-content: flex-end; }
   .site-footer__note { grid-column: 1 / -1; }
 }
+
+/* Появление при прокрутке: класс .reveal ставит JS */
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease);
+}
+.reveal.is-visible { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
