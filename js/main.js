@@ -23,6 +23,9 @@ if (toggle && menu) {
 const filter = document.querySelector('.filter');
 const catalogItems = document.querySelectorAll('.catalog__item');
 const catalogEmpty = document.querySelector('.catalog__empty');
+const catalogStatus = document.querySelector('[data-catalog-status]');
+const bouquetWord = { one: 'букет', few: 'букета', many: 'букетов' };
+const ruPlural = new Intl.PluralRules('ru');
 
 filter?.addEventListener('click', (e) => {
   const btn = e.target.closest('.filter__btn');
@@ -35,6 +38,8 @@ filter?.addEventListener('click', (e) => {
     shown += match;
   });
   catalogEmpty.hidden = shown > 0;
+  // для экранных читалок: сколько букетов осталось после фильтра
+  catalogStatus.textContent = shown ? `Показано ${shown} ${bouquetWord[ruPlural.select(shown)]}` : catalogEmpty.textContent;
 });
 
 // «Заказать» на карточке: подставляем букет в форму, к форме ведёт сама ссылка #order
