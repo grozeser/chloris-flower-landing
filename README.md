@@ -3,7 +3,9 @@
 Портфолио-проект: одностраничный сайт вымышленной цветочной студии «Хлорис».
 Бренд, тексты и контакты выдуманные.
 
-**Сайт:** https://grozeser.github.io/chloris-flower-landing/
+**Сайт:** https://grozeser.github.io/chloris-flower-landing/ · **Кейс:** [docs/case-study.md](docs/case-study.md)
+
+![Первый экран на десктопе](docs/screenshots/desktop.jpg)
 
 ## Стек
 
@@ -34,7 +36,7 @@ node --test
 - [x] Этап 6. Изображения (`img/`, авторы ниже)
 - [x] Этап 7. Проверка (`docs/testing.md`)
 - [x] Этап 8. Выкладка на GitHub Pages
-- [ ] Этап 9. Описание кейса
+- [x] Этап 9. Описание кейса (`docs/case-study.md`)
 
 ## Авторы фото
 
