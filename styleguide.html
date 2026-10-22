@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Дизайн-система — Бутон</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Только для этой страницы */
+    .sg > * + * { margin-top: var(--space-7); }
+    .sg h2 { font-size: var(--text-2xl); margin-bottom: var(--space-4); }
+    .sg h3 { font-size: var(--text-xl); margin: var(--space-5) 0 var(--space-3); }
+    .sg-row { display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; }
+    .sg-grid { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); }
+    .swatch { overflow: hidden; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); }
+    .swatch__chip { height: 4.5rem; border-bottom: 1px solid var(--color-border); }
+    .swatch__info { display: grid; gap: var(--space-1); padding: var(--space-3) var(--space-4); font-size: var(--text-sm); }
+    .swatch__info code { font-weight: 700; }
+    .swatch__info span { color: var(--color-muted); }
+    code { font-family: ui-monospace, Consolas, monospace; font-size: 0.9em; }
+    table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
+    th, td { padding: var(--space-2) var(--space-3); border-bottom: 1px solid var(--color-border); text-align: left; vertical-align: top; }
+    .table-wrap { overflow-x: auto; }
+    .space-bar { height: 1rem; border-radius: 2px; background: var(--color-accent); }
+    .box { display: grid; place-items: center; height: 5rem; background: var(--color-surface); font-size: var(--text-sm); }
+    ul.plain { margin: 0; padding-left: 1.25rem; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">К содержимому</a>
+  <main id="main" class="container sg" style="padding-block: var(--space-8)">
+    <header>
+      <p class="eyebrow">Этап 1</p>
+      <h1 style="font-size: var(--text-3xl)">Дизайн-система «Бутон»</h1>
+      <p class="lead" style="margin-top: var(--space-3)">Токены и базовые компоненты в <code>css/style.css</code>. Все значения — CSS-переменные в <code>:root</code>, жёстких цветов и размеров в компонентах нет.</p>
+    </header>
+
+    <section aria-labelledby="colors">
+      <h2 id="colors">Цвет</h2>
+      <p class="lead">Контраст указан для пары «токен на фоне страницы», если не сказано иначе. Норма WCAG AA: 4.5:1 для текста, 3:1 для границ полей и крупного текста.</p>
+      <h3>Основные</h3>
+      <div class="sg-grid">
+        <div class="swatch"><div class="swatch__chip" style="background: var(--color-bg)"></div><div class="swatch__info"><code>--color-bg</code>#FBF7F2<span>Фон страницы</span></div></div>
+        <div class="swatch"><div class="swatch__chip" style="background: var(--color-surface)"></div><div class="swatch__info"><code>--color-surface</code>#FFFFFF<span>Карточки, поля</span></div></div>
+        <div class="swatch"><div class="swatch__chip" style="background: var(--color-surface-2)"></div><div class="swatch__info"><code>--color-surface-2</code>#F1E9E0<span>Чередующиеся секции</span></div></div>
+        <div class="swatch"><div class="swatch__chip" style="background: var(--color-text)"></div><div class="swatch__info"><code>--color-text</code>#1E2420<span>Основной текст, 14.8:1 (AAA)</span></div></div>
+        <div class="swatch"><div class="swatch__chip" style="background: var(--color-muted)"></div><div class="swatch__info"><code>--color-muted</code>#5A635D<span>Второстепенный текст, 5.8:1 (на секции-2 — 5.2:1)</span></div></div>
+      </div>
+      <h3>Бренд</h3>
+      <div class="sg-grid">
+        <div class="swatch"><div class="swatch__chip" style="background: var(--color-primary)"></div><div class="swatch__info"><code>--color-primary</code>#2F4A3A<span>Зелёный: кнопки, акценты. 9.1:1 (AAA)</span></div></div>
+        <div class="swatch"><div class="swatch__chip" style="background: var(--color-primary-hover)"></div><div class="swatch__info"><code>--color-primary-hover</code>#1F3328<span>Hover и тёмные секции. Светлый текст на нём — 12.6:1</span></div></div>
+        <div class="swatch"><div class="swatch__chip" style="background: var(--color-accent)"></div><div class="swatch__info"><code>--color-accent</code>#D98C94<span>Роза — только заливка. Тёмный текст на ней 6.1:1. Как текст или граница на светлом фоне — 2.4:1, не использовать</span></div></div>
+        <div class="swatch"><div class="swatch__chip" style="background: var(--color-accent-hover)"></div><div class="swatch__info"><code>--color-accent-hover</code>#CF7882<span>Hover розовой кнопки, тёмный текст 5.0:1</span></div></div>
+        <div class="swatch"><div class="swatch__chip" style="background: var(--color-accent-soft)"></div><div class="swatch__info"><code>--color-accent-soft</code>#F6E3E5<span>Фон бейджей и заглушек фото. Зелёный текст на нём 7.9:1</span></div></div>
+        <div class="swatch"><div class="swatch__chip" style="background: var(--color-accent-text)"></div><div class="swatch__info"><code>--color-accent-text</code>#9C4A55<span>Розовый для текста (eyebrow), 5.6:1</span></div></div>
+      </div>
+      <h3>Служебные</h3>
+      <div class="sg-grid">
+        <div class="swatch"><div class="swatch__chip" style="background: var(--color-border)"></div><div class="swatch__info"><code>--color-border</code>#E3D9CE<span>Только декор: разделители</span></div></div>
+        <div class="swatch"><div class="swatch__chip" style="background: var(--color-border-strong)"></div><div class="swatch__info"><code>--color-border-strong</code>#78827B<span>Границы полей, 3.7:1</span></div></div>
+        <div class="swatch"><div class="swatch__chip" style="background: var(--color-error)"></div><div class="swatch__info"><code>--color-error</code>#B3261E<span>Ошибки, 6.1:1</span></div></div>
+        <div class="swatch"><div class="swatch__chip" style="background: var(--color-success)"></div><div class="swatch__info"><code>--color-success</code>#2F6B3F<span>Успех, 6.0:1</span></div></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="type">
+      <h2 id="type">Типографика</h2>
+      <p class="lead">Заголовки — Cormorant Garamond 600, текст — Manrope. Оба шрифта с кириллицей. Размеры плавные через <code>clamp()</code>, межстрочный интервал текста 1.6.</p>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Токен</th><th>Размер (мобильный → десктоп)</th><th>Применение</th></tr>
+          <tr><td><code>--text-hero</code></td><td>44 → 88 px</td><td><code>h1</code> на главном экране</td></tr>
+          <tr><td><code>--text-3xl</code></td><td>36 → 60 px</td><td><code>h2</code>, заголовки секций</td></tr>
+          <tr><td><code>--text-2xl</code></td><td>28 → 40 px</td><td><code>h3</code></td></tr>
+          <tr><td><code>--text-xl</code></td><td>20 → 24 px</td><td><code>h4</code>, название карточки</td></tr>
+          <tr><td><code>--text-lg</code></td><td>18 px</td><td>Вводный абзац (<code>.lead</code>), крупная кнопка</td></tr>
+          <tr><td><code>--text-base</code></td><td>16 px</td><td>Основной текст</td></tr>
+          <tr><td><code>--text-sm</code></td><td>14 px</td><td>Подписи, подсказки, eyebrow</td></tr>
+        </table>
+      </div>
+      <h3>Образец</h3>
+      <p class="eyebrow">Свежие цветы каждый день</p>
+      <h2 style="font-size: var(--text-3xl)">Букеты, которые говорят за вас</h2>
+      <p class="lead" style="margin-top: var(--space-3)">Собираем из сезонных цветов и привозим за 90 минут.</p>
+    </section>
+
+    <section aria-labelledby="space">
+      <h2 id="space">Отступы, скругления, тени</h2>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Токен</th><th>Значение</th><th></th></tr>
+          <tr><td><code>--space-1</code></td><td>4 px</td><td><div class="space-bar" style="width: var(--space-1)"></div></td></tr>
+          <tr><td><code>--space-2</code></td><td>8 px</td><td><div class="space-bar" style="width: var(--space-2)"></div></td></tr>
+          <tr><td><code>--space-3</code></td><td>12 px</td><td><div class="space-bar" style="width: var(--space-3)"></div></td></tr>
+          <tr><td><code>--space-4</code></td><td>16 px</td><td><div class="space-bar" style="width: var(--space-4)"></div></td></tr>
+          <tr><td><code>--space-5</code></td><td>24 px</td><td><div class="space-bar" style="width: var(--space-5)"></div></td></tr>
+          <tr><td><code>--space-6</code></td><td>32 px</td><td><div class="space-bar" style="width: var(--space-6)"></div></td></tr>
+          <tr><td><code>--space-7</code></td><td>48 px</td><td><div class="space-bar" style="width: var(--space-7)"></div></td></tr>
+          <tr><td><code>--space-8</code></td><td>64 px</td><td><div class="space-bar" style="width: var(--space-8)"></div></td></tr>
+          <tr><td><code>--section-y</code></td><td>64 → 128 px</td><td>Вертикальный отступ секции</td></tr>
+        </table>
+      </div>
+      <h3>Скругления</h3>
+      <div class="sg-grid">
+        <div class="box" style="border-radius: var(--radius-sm)"><code>--radius-sm</code> 8</div>
+        <div class="box" style="border-radius: var(--radius-md)"><code>--radius-md</code> 16</div>
+        <div class="box" style="border-radius: var(--radius-lg)"><code>--radius-lg</code> 28</div>
+        <div class="box" style="border-radius: var(--radius-pill)"><code>--radius-pill</code></div>
+      </div>
+      <h3>Тени</h3>
+      <div class="sg-grid">
+        <div class="box" style="box-shadow: var(--shadow-sm)"><code>--shadow-sm</code></div>
+        <div class="box" style="box-shadow: var(--shadow-md)"><code>--shadow-md</code></div>
+        <div class="box" style="box-shadow: var(--shadow-lg)"><code>--shadow-lg</code></div>
+      </div>
+      <h3>Движение</h3>
+      <p><code>--dur-fast</code> 150 мс (нажатие), <code>--dur</code> 300 мс (hover), <code>--dur-slow</code> 600 мс (появление секций), <code>--ease</code> — <code>cubic-bezier(0.22, 1, 0.36, 1)</code>. При <code>prefers-reduced-motion</code> анимации отключаются.</p>
+      <h3>Сетка и брейкпоинты</h3>
+      <p>Контейнер <code>.container</code>: до 1200 px, боковые поля <code>--gutter</code> 16 → 32 px. Брейкпоинты mobile-first: 480, 768, 1024, 1280 px.</p>
+    </section>
+
+    <section aria-labelledby="btn">
+      <h2 id="btn">Кнопка</h2>
+      <div class="sg-row">
+        <button class="btn btn--primary">Заказать</button>
+        <button class="btn btn--accent">Собрать на заказ</button>
+        <button class="btn btn--secondary">Подробнее</button>
+        <button class="btn btn--primary btn--lg">Выбрать букет</button>
+        <button class="btn btn--primary" disabled>Недоступно</button>
+      </div>
+      <div class="table-wrap" style="margin-top: var(--space-4)">
+        <table>
+          <tr><th>Вариант</th><th>Когда использовать</th></tr>
+          <tr><td><code>.btn--primary</code></td><td>Главное действие в блоке: «Заказать», «Отправить»</td></tr>
+          <tr><td><code>.btn--accent</code></td><td>Второй призыв рядом с основным, на светлом и тёмном фоне</td></tr>
+          <tr><td><code>.btn--secondary</code></td><td>Второстепенное действие: «Подробнее»</td></tr>
+          <tr><td><code>.btn--lg</code></td><td>Кнопки на главном экране</td></tr>
+        </table>
+      </div>
+      <p style="margin-top: var(--space-3)">Состояния: hover (цвет темнеет, только на устройствах с мышью), active (сдвиг на 1 px), focus-visible (контур 3 px, виден с клавиатуры), disabled (<code>disabled</code> или <code>aria-disabled="true"</code>, прозрачность 50%). Минимальная высота 48 px. Ссылка, оформленная как кнопка, остаётся <code>&lt;a&gt;</code>, действие на странице — <code>&lt;button&gt;</code>.</p>
+    </section>
+
+    <section aria-labelledby="card">
+      <h2 id="card">Карточка и бейдж</h2>
+      <div class="sg-grid">
+        <article class="card card--lift">
+          <div class="card__media" role="img" aria-label="Место для фото букета"></div>
+          <div class="card__body">
+            <span class="badge" style="align-self: flex-start">День рождения</span>
+            <h3 class="card__title" style="margin: 0">Нежное утро</h3>
+            <p class="card__price">3 900 ₽</p>
+            <button class="btn btn--primary" style="margin-top: auto">Заказать</button>
+          </div>
+        </article>
+      </div>
+      <div class="sg-row" style="margin-top: var(--space-4)">
+        <span class="badge">Без повода</span>
+        <span class="badge badge--solid">Хит</span>
+      </div>
+      <p style="margin-top: var(--space-3)">Карточка: <code>.card</code> + <code>.card__media</code> + <code>.card__body</code>, модификатор <code>.card--lift</code> поднимает её при наведении. Фото — <code>&lt;img&gt;</code> с <code>alt</code> и заданными <code>width</code>/<code>height</code>, чтобы страница не прыгала при загрузке. Бейдж — только подпись, не кнопка.</p>
+    </section>
+
+    <section aria-labelledby="form">
+      <h2 id="form">Поля формы</h2>
+      <div class="sg-grid">
+        <div class="field">
+          <label class="field__label" for="f-name">Имя</label>
+          <input class="field__input" id="f-name" type="text" placeholder="Анна">
+        </div>
+        <div class="field">
+          <label class="field__label" for="f-phone">Телефон</label>
+          <input class="field__input" id="f-phone" type="tel" aria-describedby="f-phone-hint" placeholder="+7 900 000-00-00">
+          <p class="field__hint" id="f-phone-hint">Перезвоним в течение 10 минут</p>
+        </div>
+        <div class="field">
+          <label class="field__label" for="f-err">Адрес доставки</label>
+          <input class="field__input" id="f-err" type="text" aria-invalid="true" aria-describedby="f-err-msg">
+          <p class="field__error" id="f-err-msg">Укажите адрес, чтобы мы рассчитали доставку</p>
+        </div>
+        <div class="field">
+          <label class="field__label" for="f-dis">Промокод</label>
+          <input class="field__input" id="f-dis" type="text" disabled value="Скоро">
+        </div>
+      </div>
+      <p style="margin-top: var(--space-3)">Подпись всегда связана с полем через <code>label[for]</code>. Ошибка сообщается текстом и <code>aria-invalid="true"</code> с <code>aria-describedby</code>, а не одним цветом. Граница поля 3.7:1, высота от 48 px.</p>
+    </section>
+
+    <section aria-labelledby="dark">
+      <h2 id="dark">Тёмная секция</h2>
+      <div class="section section--dark" style="padding-block: var(--space-7); border-radius: var(--radius-md)">
+        <div style="padding-inline: var(--space-5)">
+          <p class="eyebrow">Доставка</p>
+          <h3 style="margin: var(--space-2) 0">Привезём за 90 минут</h3>
+          <p class="lead">Светлый текст на тёмно-зелёном — 12.6:1.</p>
+          <div class="sg-row" style="margin-top: var(--space-4)">
+            <a class="btn btn--accent" href="#dark">Заказать</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
