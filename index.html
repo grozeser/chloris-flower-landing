@@ -3,17 +3,422 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Хлорис — студия цветов</title>
+  <title>Хлорис — свежие букеты с доставкой за 90 минут</title>
+  <meta name="description" content="Студия цветов «Хлорис»: букеты из сезонных цветов, доставка по городу за 90 минут, гарантия свежести 7 дней. Выберите букет или соберём на заказ.">
+  <meta name="theme-color" content="#FBF7F2">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="Хлорис — свежие букеты с доставкой за 90 минут">
+  <meta property="og:description" content="Букеты из сезонных цветов, доставка за 90 минут, гарантия свежести 7 дней.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%B8%3C/text%3E%3C/svg%3E">
+  <script>document.documentElement.classList.add('js')</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FlowerShop",
+    "name": "Хлорис",
+    "description": "Студия цветов: букеты из сезонных цветов, доставка по городу за 90 минут.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "ул. Цветочная, 12",
+      "addressLocality": "Москва",
+      "addressCountry": "RU"
+    },
+    "telephone": "+7-000-000-00-00",
+    "email": "hello@example.com",
+    "openingHours": "Mo-Su 08:00-22:00",
+    "priceRange": "2400–7800 ₽"
+  }
+  </script>
 </head>
 <body>
-  <main>
-    <h1>Хлорис</h1>
-    <p>Студия цветов. Сайт в разработке.</p>
+  <a class="skip-link" href="#main">К содержимому</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="logo" href="#top">Хлорис</a>
+      <button class="nav-toggle js-only" type="button" aria-expanded="false" aria-controls="menu">
+        <span class="sr-only">Открыть меню</span>
+        <span class="nav-toggle__icon" aria-hidden="true"></span>
+      </button>
+      <nav class="nav" id="menu" aria-label="Основное меню">
+        <ul class="nav__list">
+          <li><a href="#catalog">Каталог</a></li>
+          <li><a href="#how">Как это работает</a></li>
+          <li><a href="#about">О нас</a></li>
+          <li><a href="#reviews">Отзывы</a></li>
+          <li><a href="#delivery">Доставка</a></li>
+          <li><a href="#contacts">Контакты</a></li>
+        </ul>
+        <a class="btn btn--primary nav__cta" href="#order">Заказать</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <h1 class="hero__title" id="hero-title">Букеты, собранные сегодня утром</h1>
+          <p class="lead hero__lead">Студия «Хлорис» собирает букеты из сезонных цветов и привозит по городу за 90 минут. Если цветы завянут раньше чем через 7 дней, заменим.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary btn--lg" href="#catalog">Выбрать букет</a>
+            <a class="btn btn--accent btn--lg" href="#order">Собрать на заказ</a>
+          </div>
+          <ul class="hero__badges">
+            <li class="badge">Доставка за 90 минут</li>
+            <li class="badge">Свежесть 7 дней</li>
+          </ul>
+        </div>
+        <img class="hero__image" src="img/placeholder.svg" width="800" height="1000" fetchpriority="high" alt="Букет из пудровых роз и эвкалипта в крафтовой бумаге">
+      </div>
+    </section>
+
+    <section class="section" id="benefits" aria-labelledby="benefits-title">
+      <div class="container">
+        <h2 class="sr-only" id="benefits-title">Преимущества</h2>
+        <ul class="benefits">
+          <li class="benefit">
+            <h3 class="benefit__title">Свежие каждый день</h3>
+            <p>Поставки приходят каждое утро. Дольше суток цветы у нас не стоят.</p>
+          </li>
+          <li class="benefit">
+            <h3 class="benefit__title">Доставка за 90 минут</h3>
+            <p>По городу привезём за 90 минут или к часу, который вы назовёте. От 5&nbsp;000&nbsp;₽ доставка бесплатная.</p>
+          </li>
+          <li class="benefit">
+            <h3 class="benefit__title">Гарантия 7 дней</h3>
+            <p>Если букет завянет раньше, чем через неделю, привезём такой же новый. Условия — в разделе <a href="#delivery">«Доставка»</a>.</p>
+          </li>
+          <li class="benefit">
+            <h3 class="benefit__title">Фото перед отправкой</h3>
+            <p>Пришлём фото готового букета. Не понравится — переделаем.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="catalog" aria-labelledby="catalog-title">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow">Каталог</p>
+          <h2 id="catalog-title">Букеты на любой повод</h2>
+          <p class="lead">Цены указаны за готовый букет. Состав может немного меняться по сезону, цвет и размер остаются прежними.</p>
+        </div>
+
+        <div class="filter js-only" role="group" aria-label="Повод">
+          <button class="filter__btn" type="button" data-filter="all" aria-pressed="true">Все</button>
+          <button class="filter__btn" type="button" data-filter="birthday" aria-pressed="false">День рождения</button>
+          <button class="filter__btn" type="button" data-filter="wedding" aria-pressed="false">Свадьба</button>
+          <button class="filter__btn" type="button" data-filter="anytime" aria-pressed="false">Без повода</button>
+        </div>
+
+        <ul class="catalog">
+          <li class="catalog__item" data-occasion="birthday">
+            <article class="card card--lift">
+              <img class="card__media" src="img/placeholder.svg" width="800" height="1000" loading="lazy" alt="Букет «Нежное утро»: кремовые розы и эустома с эвкалиптом">
+              <div class="card__body">
+                <p class="card__badges"><span class="badge">День рождения</span> <span class="badge badge--solid">Хит</span></p>
+                <h3 class="card__title">Нежное утро</h3>
+                <p class="card__text">Розы, эустома, эвкалипт</p>
+                <p class="card__price">3&nbsp;900&nbsp;₽</p>
+                <a class="btn btn--primary" href="#order" data-bouquet="Нежное утро" aria-label="Заказать букет «Нежное утро»">Заказать</a>
+              </div>
+            </article>
+          </li>
+          <li class="catalog__item" data-occasion="anytime">
+            <article class="card card--lift">
+              <img class="card__media" src="img/placeholder.svg" width="800" height="1000" loading="lazy" alt="Букет «Летний луг»: ромашки и лаванда со злаками">
+              <div class="card__body">
+                <p class="card__badges"><span class="badge">Без повода</span></p>
+                <h3 class="card__title">Летний луг</h3>
+                <p class="card__text">Ромашки, лаванда, злаки</p>
+                <p class="card__price">2&nbsp;900&nbsp;₽</p>
+                <a class="btn btn--primary" href="#order" data-bouquet="Летний луг" aria-label="Заказать букет «Летний луг»">Заказать</a>
+              </div>
+            </article>
+          </li>
+          <li class="catalog__item" data-occasion="wedding">
+            <article class="card card--lift">
+              <img class="card__media" src="img/placeholder.svg" width="800" height="1000" loading="lazy" alt="Букет «Белое облако»: белая гортензия, розы и гипсофила">
+              <div class="card__body">
+                <p class="card__badges"><span class="badge">Свадьба</span></p>
+                <h3 class="card__title">Белое облако</h3>
+                <p class="card__text">Гортензия, белые розы, гипсофила</p>
+                <p class="card__price">6&nbsp;500&nbsp;₽</p>
+                <a class="btn btn--primary" href="#order" data-bouquet="Белое облако" aria-label="Заказать букет «Белое облако»">Заказать</a>
+              </div>
+            </article>
+          </li>
+          <li class="catalog__item" data-occasion="birthday">
+            <article class="card card--lift">
+              <img class="card__media" src="img/placeholder.svg" width="800" height="1000" loading="lazy" alt="Букет «Сливочный закат»: персиковые розы и лизиантус">
+              <div class="card__body">
+                <p class="card__badges"><span class="badge">День рождения</span></p>
+                <h3 class="card__title">Сливочный закат</h3>
+                <p class="card__text">Персиковые розы, лизиантус, эвкалипт</p>
+                <p class="card__price">4&nbsp;600&nbsp;₽</p>
+                <a class="btn btn--primary" href="#order" data-bouquet="Сливочный закат" aria-label="Заказать букет «Сливочный закат»">Заказать</a>
+              </div>
+            </article>
+          </li>
+          <li class="catalog__item" data-occasion="anytime">
+            <article class="card card--lift">
+              <img class="card__media" src="img/placeholder.svg" width="800" height="1000" loading="lazy" alt="Букет «Тёмная вишня»: бордовые розы и скабиоза">
+              <div class="card__body">
+                <p class="card__badges"><span class="badge">Без повода</span> <span class="badge badge--solid">Хит</span></p>
+                <h3 class="card__title">Тёмная вишня</h3>
+                <p class="card__text">Бордовые розы, скабиоза, рускус</p>
+                <p class="card__price">5&nbsp;200&nbsp;₽</p>
+                <a class="btn btn--primary" href="#order" data-bouquet="Тёмная вишня" aria-label="Заказать букет «Тёмная вишня»">Заказать</a>
+              </div>
+            </article>
+          </li>
+          <li class="catalog__item" data-occasion="wedding">
+            <article class="card card--lift">
+              <img class="card__media" src="img/placeholder.svg" width="800" height="1000" loading="lazy" alt="Букет «Первый снег»: белые розы, лизиантус и фрезия">
+              <div class="card__body">
+                <p class="card__badges"><span class="badge">Свадьба</span></p>
+                <h3 class="card__title">Первый снег</h3>
+                <p class="card__text">Белые розы, лизиантус, фрезия</p>
+                <p class="card__price">7&nbsp;800&nbsp;₽</p>
+                <a class="btn btn--primary" href="#order" data-bouquet="Первый снег" aria-label="Заказать букет «Первый снег»">Заказать</a>
+              </div>
+            </article>
+          </li>
+          <li class="catalog__item" data-occasion="anytime">
+            <article class="card card--lift">
+              <img class="card__media" src="img/placeholder.svg" width="800" height="1000" loading="lazy" alt="Букет «Зелёный чай»: зелёные хризантемы с эвкалиптом">
+              <div class="card__body">
+                <p class="card__badges"><span class="badge">Без повода</span></p>
+                <h3 class="card__title">Зелёный чай</h3>
+                <p class="card__text">Хризантемы, эвкалипт, писташ</p>
+                <p class="card__price">2&nbsp;400&nbsp;₽</p>
+                <a class="btn btn--primary" href="#order" data-bouquet="Зелёный чай" aria-label="Заказать букет «Зелёный чай»">Заказать</a>
+              </div>
+            </article>
+          </li>
+          <li class="catalog__item" data-occasion="birthday">
+            <article class="card card--lift">
+              <img class="card__media" src="img/placeholder.svg" width="800" height="1000" loading="lazy" alt="Букет «Пудровый вечер»: пудровые розы и маттиола">
+              <div class="card__body">
+                <p class="card__badges"><span class="badge">День рождения</span></p>
+                <h3 class="card__title">Пудровый вечер</h3>
+                <p class="card__text">Пудровые розы, маттиола, эвкалипт</p>
+                <p class="card__price">3&nbsp;400&nbsp;₽</p>
+                <a class="btn btn--primary" href="#order" data-bouquet="Пудровый вечер" aria-label="Заказать букет «Пудровый вечер»">Заказать</a>
+              </div>
+            </article>
+          </li>
+        </ul>
+        <p class="catalog__empty" role="status" hidden>В этом разделе пока нет букетов. Посмотрите «Все» или опишите, что хотите, в заявке.</p>
+
+        <div class="catalog__custom">
+          <p class="catalog__custom-text">Не нашли свой? Соберём букет по вашему описанию.</p>
+          <a class="btn btn--secondary" href="#order">Собрать на заказ</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how" aria-labelledby="how-title">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow">Как это работает</p>
+          <h2 id="how-title">Три шага до букета</h2>
+        </div>
+        <ol class="steps">
+          <li class="step">
+            <h3 class="step__title">Выберите букет</h3>
+            <p>Из каталога или опишите, что хотите: повод, бюджет, любимые цвета.</p>
+          </li>
+          <li class="step">
+            <h3 class="step__title">Посмотрите фото</h3>
+            <p>Флорист соберёт букет и пришлёт фото. Если что-то не так, поправим.</p>
+          </li>
+          <li class="step">
+            <h3 class="step__title">Получите букет</h3>
+            <p>Курьер привезёт за 90 минут или к нужному часу. Получателю ничего делать не нужно.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="about" aria-labelledby="about-title">
+      <div class="container about">
+        <img class="about__image" src="img/placeholder.svg" width="800" height="1000" loading="lazy" alt="Флорист обрезает стебли роз за рабочим столом">
+        <div class="about__content">
+          <p class="eyebrow">О нас</p>
+          <h2 id="about-title">Три флориста и один небольшой цех</h2>
+          <p class="lead">Студию назвали в честь Хлорис, греческой богини цветов и весны. «Хлорис» открылась в 2021 году. Мы покупаем цветы у небольших хозяйств, собираем букеты вручную и никогда не используем цветы, которые простояли больше суток. Каждый букет делает один флорист от начала до конца.</p>
+          <ul class="stats">
+            <li class="stat"><span class="stat__num">5</span> <span class="stat__label">лет</span></li>
+            <li class="stat"><span class="stat__num">12&nbsp;000</span> <span class="stat__label">букетов</span></li>
+            <li class="stat"><span class="stat__num">3</span> <span class="stat__label">флориста</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="reviews" aria-labelledby="reviews-title">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow">Отзывы</p>
+          <h2 id="reviews-title">Что пишут клиенты</h2>
+        </div>
+        <div class="reviews__controls js-only">
+          <button class="reviews__btn" type="button" data-dir="-1" aria-controls="reviews-list">Предыдущий отзыв</button>
+          <button class="reviews__btn" type="button" data-dir="1" aria-controls="reviews-list">Следующий отзыв</button>
+        </div>
+        <div class="reviews" id="reviews-list" role="region" aria-label="Отзывы клиентов" tabindex="0">
+          <ul class="reviews__list">
+            <li class="reviews__item">
+              <figure class="review">
+                <blockquote><p>Заказала маме на юбилей в другой город. Прислали фото, я попросила убрать лилии — переделали за 15 минут. Мама сказала, что это самый красивый букет за много лет.</p></blockquote>
+                <figcaption>Марина К., день рождения</figcaption>
+              </figure>
+            </li>
+            <li class="reviews__item">
+              <figure class="review">
+                <blockquote><p>Букет простоял девять дней. Обычно я выбрасываю цветы через четыре.</p></blockquote>
+                <figcaption>Андрей С., без повода</figcaption>
+              </figure>
+            </li>
+            <li class="reviews__item">
+              <figure class="review">
+                <blockquote><p>Делали букет невесты и бутоньерки. Цвета совпали с платьем до оттенка, всё привезли за час до выхода.</p></blockquote>
+                <figcaption>Ольга и Дмитрий, свадьба</figcaption>
+              </figure>
+            </li>
+            <li class="reviews__item">
+              <figure class="review">
+                <blockquote><p>Курьер приехал за 70 минут и позвонил за пять минут до этого. Получатель был дома, сюрприз удался.</p></blockquote>
+                <figcaption>Игорь П., без повода</figcaption>
+              </figure>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="delivery" aria-labelledby="delivery-title">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow">Доставка и оплата</p>
+          <h2 id="delivery-title">Частые вопросы</h2>
+          <p class="lead">Не нашли ответ? <a href="tel:+70000000000">Позвоните нам</a> с 8:00 до 22:00.</p>
+        </div>
+        <div class="faq">
+          <details class="faq__item">
+            <summary>Как быстро вы привезёте?</summary>
+            <p>По городу за 90 минут после подтверждения заказа. Если нужен точный час, укажите его в заявке: приедем в этот час, а не раньше.</p>
+          </details>
+          <details class="faq__item">
+            <summary>Сколько стоит доставка?</summary>
+            <p>350&nbsp;₽ по городу. При заказе от 5&nbsp;000&nbsp;₽ доставка бесплатная.</p>
+          </details>
+          <details class="faq__item">
+            <summary>Можно забрать самому?</summary>
+            <p>Да, бесплатно. Букет будет готов через 30 минут после подтверждения. Адрес — в разделе <a href="#contacts">«Контакты»</a>.</p>
+          </details>
+          <details class="faq__item">
+            <summary>Как оплатить?</summary>
+            <p>Картой или через СБП после подтверждения заказа. Курьеру можно заплатить картой или наличными.</p>
+          </details>
+          <details class="faq__item">
+            <summary>Что делать, если букет завял?</summary>
+            <p>Напишите нам с фото в течение 7 дней, и мы привезём новый бесплатно. Чтобы цветы стояли дольше, подрежьте стебли на 2 см, поставьте в чистую прохладную воду и меняйте её раз в два дня. Гарантия не действует, если букет стоял на солнце или без воды.</p>
+          </details>
+          <details class="faq__item">
+            <summary>За сколько дней можно заказать?</summary>
+            <p>За 14 дней и до 90 минут. На 14 февраля, 8 Марта и 1 сентября лучше заказать за три дня.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contacts" aria-labelledby="contacts-title">
+      <div class="container contacts">
+        <div class="contacts__info">
+          <p class="eyebrow">Заказ</p>
+          <h2 id="contacts-title">Оставьте заявку, мы перезвоним</h2>
+          <p class="lead">Ответим в течение 10 минут, пока студия работает: ежедневно с 8:00 до 22:00.</p>
+          <h3 class="contacts__heading">Контакты</h3>
+          <address class="contacts__list">
+            <p><span class="contacts__label">Адрес</span> Москва, ул. Цветочная, 12. Вход со двора, вывеска «Хлорис»</p>
+            <p><span class="contacts__label">Часы</span> Ежедневно, 8:00–22:00</p>
+            <p><span class="contacts__label">Телефон</span> <a href="tel:+70000000000">+7 (000) 000-00-00</a></p>
+            <p><span class="contacts__label">Почта</span> <a href="mailto:hello@example.com">hello@example.com</a></p>
+            <p><span class="contacts__label">Соцсети</span> <a href="#">Telegram</a> · <a href="#">ВКонтакте</a></p>
+          </address>
+        </div>
+
+        <div class="contacts__form">
+          <form class="order-form" id="order" method="post">
+            <div class="field">
+              <label class="field__label" for="order-name">Ваше имя</label>
+              <input class="field__input" id="order-name" name="name" type="text" autocomplete="name" placeholder="Анна" required aria-describedby="order-name-error">
+              <p class="field__error" id="order-name-error" hidden></p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="order-phone">Телефон</label>
+              <input class="field__input" id="order-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+7 000 000-00-00" required aria-describedby="order-phone-hint order-phone-error">
+              <p class="field__hint" id="order-phone-hint">Перезвоним в течение 10 минут</p>
+              <p class="field__error" id="order-phone-error" hidden></p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="order-bouquet">Букет</label>
+              <select class="field__input" id="order-bouquet" name="bouquet">
+                <option value="">Выберу вместе с флористом</option>
+                <option>Нежное утро</option>
+                <option>Летний луг</option>
+                <option>Белое облако</option>
+                <option>Сливочный закат</option>
+                <option>Тёмная вишня</option>
+                <option>Первый снег</option>
+                <option>Зелёный чай</option>
+                <option>Пудровый вечер</option>
+              </select>
+            </div>
+            <div class="field">
+              <label class="field__label" for="order-comment">Комментарий</label>
+              <textarea class="field__input" id="order-comment" name="comment" rows="4" placeholder="Адрес, повод, любимые цвета" aria-describedby="order-comment-hint order-comment-error"></textarea>
+              <p class="field__hint" id="order-comment-hint">Необязательно, всё уточним по телефону</p>
+              <p class="field__error" id="order-comment-error" hidden></p>
+            </div>
+            <button class="btn btn--primary btn--lg" type="submit">Отправить заявку</button>
+            <p class="order-form__consent">Нажимая «Отправить заявку», вы соглашаетесь на обработку персональных данных.</p>
+            <p class="field__error order-form__fail" role="alert" hidden>Не получилось отправить заявку. Проверьте интернет и попробуйте ещё раз или позвоните нам: <a href="tel:+70000000000">+7 (000) 000-00-00</a>.</p>
+          </form>
+          <div class="order-success" role="status" tabindex="-1" hidden>
+            <h3 class="order-success__title">Заявка принята</h3>
+            <p>Спасибо, <span data-name></span>! Перезвоним на <span data-phone></span> в течение 10 минут. Если вы написали ночью, перезвоним утром после 8:00.</p>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer section--dark">
+    <div class="container site-footer__inner">
+      <p class="site-footer__copy">© 2026 Студия «Хлорис»</p>
+      <nav aria-label="Меню в подвале">
+        <ul class="nav__list">
+          <li><a href="#catalog">Каталог</a></li>
+          <li><a href="#how">Как это работает</a></li>
+          <li><a href="#about">О нас</a></li>
+          <li><a href="#reviews">Отзывы</a></li>
+          <li><a href="#delivery">Доставка</a></li>
+          <li><a href="#contacts">Контакты</a></li>
+        </ul>
+      </nav>
+      <p class="site-footer__note">Демо-проект для портфолио: студия, цены, отзывы и контакты вымышленные. Фото с Unsplash, авторы указаны в README.</p>
+    </div>
+  </footer>
+
   <script src="js/main.js" defer></script>
 </body>
 </html>

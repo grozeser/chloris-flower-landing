@@ -102,6 +102,8 @@ img, svg { display: block; max-width: 100%; }
   background: var(--color-primary); color: var(--color-on-primary);
 }
 .skip-link:focus { top: var(--space-4); }
+/* Элементы, которые работают только с JS: без него скрыты */
+html:not(.js) .js-only { display: none; }
 
 /* Раскладка */
 .container { width: min(100% - 2 * var(--gutter), var(--container)); margin-inline: auto; }
