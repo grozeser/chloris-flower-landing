@@ -26,18 +26,23 @@ if (toggle && menu) {
 
 // Тень у шапки после начала прокрутки; бегущая строка движется только вместе с прокруткой,
 // поэтому сама по себе не отвлекает и не требует кнопки паузы
+// Ширину строки меряем только при первой прокрутке: замер при загрузке стоил ~100 мс принудительной раскладки
 const header = document.querySelector('.site-header');
 const tickerTrack = document.querySelector('.ticker__track');
+let tickerHalf = 0;
 let scrollQueued = false;
 const onScroll = () => {
   scrollQueued = false;
   header.classList.toggle('is-scrolled', scrollY > 8);
-  if (tickerTrack && !reducedMotion) tickerTrack.style.transform = `translateX(${-(scrollY * 0.35) % (tickerTrack.scrollWidth / 2)}px)`;
+  if (!tickerTrack || reducedMotion) return;
+  tickerHalf ||= tickerTrack.scrollWidth / 2;
+  tickerTrack.style.transform = `translateX(${-(scrollY * 0.35) % tickerHalf}px)`;
 };
 addEventListener('scroll', () => {
   if (!scrollQueued) { scrollQueued = true; requestAnimationFrame(onScroll); }
 }, { passive: true });
-onScroll();
+addEventListener('resize', () => { tickerHalf = 0; });
+document.fonts.ready.then(() => { tickerHalf = 0; }); // после загрузки шрифтов ширина меняется
 
 // Каталог: фильтры по поводу и виду, сортировка по цене, «Показать ещё»
 const catalog = document.querySelector('.catalog');
@@ -342,12 +347,12 @@ if (!reducedMotion && 'IntersectionObserver' in window) {
     });
   }, { rootMargin: '0px 0px -40px 0px', threshold: 0.1 });
 
-  document.querySelectorAll('.section__head, .benefit, .catalog__item, .catalog__custom, .plan, .subscription__image, .step, .about__image, .about__content, .faq__item, .contacts__info, .contacts__form')
-    .forEach((el) => {
-      if (el.getBoundingClientRect().top < innerHeight) return;
-      const index = [...el.parentElement.children].indexOf(el);
-      el.style.transitionDelay = `${(index % 4) * 80}ms`;
-      el.classList.add('reveal');
-      observer.observe(el);
-    });
+  const targets = [...document.querySelectorAll('.section__head, .benefit, .catalog__item, .catalog__custom, .plan, .subscription__image, .step, .about__image, .about__content, .faq__item, .contacts__info, .contacts__form')];
+  // сначала все замеры, потом все записи: иначе каждая итерация заставляет браузер пересчитывать раскладку
+  targets.filter((el) => el.getBoundingClientRect().top >= innerHeight).forEach((el) => {
+    const index = [...el.parentElement.children].indexOf(el);
+    el.style.transitionDelay = `${(index % 4) * 80}ms`;
+    el.classList.add('reveal');
+    observer.observe(el);
+  });
 }

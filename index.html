@@ -18,9 +18,8 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%B8%3C/text%3E%3C/svg%3E">
   <script>document.documentElement.classList.add('js')</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&display=swap">
+  <link rel="preload" href="fonts/cormorant-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
   <script type="application/ld+json">
   {
@@ -85,8 +84,12 @@
           </ul>
         </div>
         <div class="hero__media">
-          <img class="hero__image" src="img/hero-1200.webp" srcset="img/hero-640.webp 640w, img/hero-800.webp 800w, img/hero-1200.webp 1200w" sizes="(min-width: 1024px) 540px, 100vw" width="1200" height="1500" fetchpriority="high" alt="Букет из розовых роз и мелких белых и оранжевых цветов в светлой упаковке">
-          <img class="hero__inset" src="img/hero-inset-400.webp" width="400" height="400" alt="">
+          <picture>
+            <!-- на телефоне фото квадратное: отдаём уже обрезанный файл, а не 4:5 -->
+            <source media="(max-width: 767px)" srcset="img/hero-sq-480.webp 480w, img/hero-sq-720.webp 720w" sizes="calc(100vw - 32px)">
+            <img class="hero__image" src="img/hero-1200.webp" srcset="img/hero-640.webp 640w, img/hero-800.webp 800w, img/hero-1200.webp 1200w" sizes="(min-width: 1024px) 540px, 100vw" width="1200" height="1500" fetchpriority="high" alt="Букет из розовых роз и мелких белых и оранжевых цветов в светлой упаковке">
+          </picture>
+          <img class="hero__inset" src="img/hero-inset-400.webp" srcset="img/hero-inset-200.webp 200w, img/hero-inset-400.webp 400w" sizes="(min-width: 1024px) 210px, 28vw" width="400" height="400" alt="">
           <p class="hero__note"><strong>Привезём сегодня</strong> если заказать до 20:30</p>
         </div>
       </div>
