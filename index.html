@@ -37,7 +37,7 @@
     "telephone": "+7-000-000-00-00",
     "email": "hello@example.com",
     "openingHours": "Mo-Su 08:00-22:00",
-    "priceRange": "2400–7800 ₽"
+    "priceRange": "2200–7900 ₽"
   }
   </script>
 </head>
@@ -54,7 +54,7 @@
       <nav class="nav" id="menu" aria-label="Основное меню">
         <ul class="nav__list">
           <li><a href="#catalog">Каталог</a></li>
-          <li><a href="#how">Как это работает</a></li>
+          <li><a href="#subscription">Подписка</a></li>
           <li><a href="#about">О нас</a></li>
           <li><a href="#reviews">Отзывы</a></li>
           <li><a href="#delivery">Доставка</a></li>
@@ -62,6 +62,10 @@
         </ul>
         <a class="btn btn--primary nav__cta" href="#order">Заказать</a>
       </nav>
+      <button class="cart-btn js-only" type="button" aria-haspopup="dialog" aria-controls="cart" aria-label="Корзина, пусто" data-open-cart>
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+        <span class="cart-btn__count" data-cart-count hidden>0</span>
+      </button>
     </div>
   </header>
 
@@ -80,9 +84,20 @@
             <li class="badge">Свежесть 7 дней</li>
           </ul>
         </div>
-        <img class="hero__image" src="img/hero-1200.webp" srcset="img/hero-640.webp 640w, img/hero-800.webp 800w, img/hero-1200.webp 1200w" sizes="(min-width: 1024px) 540px, 100vw" width="1200" height="1500" fetchpriority="high" alt="Букет из розовых роз и мелких белых и оранжевых цветов в светлой упаковке">
+        <div class="hero__media">
+          <img class="hero__image" src="img/hero-1200.webp" srcset="img/hero-640.webp 640w, img/hero-800.webp 800w, img/hero-1200.webp 1200w" sizes="(min-width: 1024px) 540px, 100vw" width="1200" height="1500" fetchpriority="high" alt="Букет из розовых роз и мелких белых и оранжевых цветов в светлой упаковке">
+          <img class="hero__inset" src="img/hero-inset-400.webp" width="400" height="400" alt="">
+          <p class="hero__note"><strong>Привезём сегодня</strong> если заказать до 20:30</p>
+        </div>
       </div>
     </section>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track">
+        <span>Пионы</span><span>Ранункулюсы</span><span>Гортензии</span><span>Тюльпаны</span><span>Садовые розы</span><span>Эустома</span><span>Подсолнухи</span><span>Сухоцветы</span>
+        <span>Пионы</span><span>Ранункулюсы</span><span>Гортензии</span><span>Тюльпаны</span><span>Садовые розы</span><span>Эустома</span><span>Подсолнухи</span><span>Сухоцветы</span>
+      </div>
+    </div>
 
     <section class="section" id="benefits" aria-labelledby="benefits-title">
       <div class="container">
@@ -113,18 +128,36 @@
         <div class="section__head">
           <p class="eyebrow">Каталог</p>
           <h2 id="catalog-title">Букеты на любой повод</h2>
-          <p class="lead">Цены указаны за готовый букет. Состав может немного меняться по сезону, цвет и размер остаются прежними.</p>
+          <p class="lead">16 букетов и композиций: классические, моно-букеты и цветы в коробке или корзине. Цены за готовую работу, состав может немного меняться по сезону.</p>
         </div>
 
-        <div class="filter js-only" role="group" aria-label="Повод">
-          <button class="filter__btn" type="button" data-filter="all" aria-pressed="true">Все</button>
-          <button class="filter__btn" type="button" data-filter="birthday" aria-pressed="false">День рождения</button>
-          <button class="filter__btn" type="button" data-filter="wedding" aria-pressed="false">Свадьба</button>
-          <button class="filter__btn" type="button" data-filter="anytime" aria-pressed="false">Без повода</button>
+        <div class="catalog__tools js-only">
+          <div class="filter" role="group" aria-labelledby="filter-occasion">
+            <span class="filter__label" id="filter-occasion">Повод</span>
+            <button class="filter__btn" type="button" data-group="occasion" data-value="all" aria-pressed="true">Все</button>
+            <button class="filter__btn" type="button" data-group="occasion" data-value="birthday" aria-pressed="false">День рождения</button>
+            <button class="filter__btn" type="button" data-group="occasion" data-value="wedding" aria-pressed="false">Свадьба</button>
+            <button class="filter__btn" type="button" data-group="occasion" data-value="anytime" aria-pressed="false">Без повода</button>
+          </div>
+          <div class="filter" role="group" aria-labelledby="filter-type">
+            <span class="filter__label" id="filter-type">Вид</span>
+            <button class="filter__btn" type="button" data-group="type" data-value="all" aria-pressed="true">Все</button>
+            <button class="filter__btn" type="button" data-group="type" data-value="bouquet" aria-pressed="false">Букеты</button>
+            <button class="filter__btn" type="button" data-group="type" data-value="mono" aria-pressed="false">Моно-букеты</button>
+            <button class="filter__btn" type="button" data-group="type" data-value="box" aria-pressed="false">В коробке и корзине</button>
+          </div>
+          <label class="sort">
+            <span class="filter__label">Сортировка</span>
+            <select class="field__input sort__select" data-sort>
+              <option value="popular">Сначала популярные</option>
+              <option value="asc">Сначала дешевле</option>
+              <option value="desc">Сначала дороже</option>
+            </select>
+          </label>
         </div>
 
         <ul class="catalog">
-          <li class="catalog__item" data-occasion="birthday">
+          <li class="catalog__item" data-product="nezhnoe-utro" data-name="Нежное утро" data-price="3900" data-occasion="birthday" data-type="mono">
             <article class="card card--lift">
               <img class="card__media" src="img/bouquet-1-800.webp" srcset="img/bouquet-1-400.webp 400w, img/bouquet-1-800.webp 800w" sizes="(min-width: 1024px) 290px, (min-width: 768px) 33vw, 50vw" width="800" height="1000" loading="lazy" alt="Букет «Нежное утро»: белые пионы в крафтовой бумаге">
               <div class="card__body">
@@ -132,11 +165,25 @@
                 <h3 class="card__title">Нежное утро</h3>
                 <p class="card__text">Пионы, зелень</p>
                 <p class="card__price">3&nbsp;900&nbsp;₽</p>
-                <a class="btn btn--secondary" href="#order" data-bouquet="Нежное утро" aria-label="Заказать букет «Нежное утро»">Заказать</a>
+                <button class="btn btn--secondary js-only" type="button" data-add aria-label="В корзину: «Нежное утро»">В корзину</button>
+                <a class="btn btn--secondary nojs-only" href="#order">Заказать</a>
               </div>
             </article>
           </li>
-          <li class="catalog__item" data-occasion="anytime">
+          <li class="catalog__item" data-product="rozovaya-shkatulka" data-name="Розовая шкатулка" data-price="5900" data-occasion="birthday" data-type="box">
+            <article class="card card--lift">
+              <img class="card__media" src="img/bouquet-9-800.webp" srcset="img/bouquet-9-400.webp 400w, img/bouquet-9-800.webp 800w" sizes="(min-width: 1024px) 290px, (min-width: 768px) 33vw, 50vw" width="800" height="1000" loading="lazy" alt="Композиция «Розовая шкатулка»: кремовые и розовые розы в розовой шляпной коробке">
+              <div class="card__body">
+                <p class="card__badges"><span class="badge">День рождения</span> <span class="badge badge--solid">Новинка</span></p>
+                <h3 class="card__title">Розовая шкатулка</h3>
+                <p class="card__text">Розы, хризантемы, шляпная коробка</p>
+                <p class="card__price">5&nbsp;900&nbsp;₽</p>
+                <button class="btn btn--secondary js-only" type="button" data-add aria-label="В корзину: «Розовая шкатулка»">В корзину</button>
+                <a class="btn btn--secondary nojs-only" href="#order">Заказать</a>
+              </div>
+            </article>
+          </li>
+          <li class="catalog__item" data-product="letniy-lug" data-name="Летний луг" data-price="2900" data-occasion="anytime" data-type="bouquet">
             <article class="card card--lift">
               <img class="card__media" src="img/bouquet-2-800.webp" srcset="img/bouquet-2-400.webp 400w, img/bouquet-2-800.webp 800w" sizes="(min-width: 1024px) 290px, (min-width: 768px) 33vw, 50vw" width="800" height="1000" loading="lazy" alt="Букет «Летний луг»: ромашки и полевые травы">
               <div class="card__body">
@@ -144,35 +191,25 @@
                 <h3 class="card__title">Летний луг</h3>
                 <p class="card__text">Ромашки, полевые травы</p>
                 <p class="card__price">2&nbsp;900&nbsp;₽</p>
-                <a class="btn btn--secondary" href="#order" data-bouquet="Летний луг" aria-label="Заказать букет «Летний луг»">Заказать</a>
+                <button class="btn btn--secondary js-only" type="button" data-add aria-label="В корзину: «Летний луг»">В корзину</button>
+                <a class="btn btn--secondary nojs-only" href="#order">Заказать</a>
               </div>
             </article>
           </li>
-          <li class="catalog__item" data-occasion="wedding">
+          <li class="catalog__item" data-product="pionovy-vals" data-name="Пионовый вальс" data-price="5400" data-occasion="wedding" data-type="mono">
             <article class="card card--lift">
-              <img class="card__media" src="img/bouquet-3-800.webp" srcset="img/bouquet-3-400.webp 400w, img/bouquet-3-800.webp 800w" sizes="(min-width: 1024px) 290px, (min-width: 768px) 33vw, 50vw" width="800" height="1000" loading="lazy" alt="Букет «Белое облако»: белая гортензия в жестяной кружке">
+              <img class="card__media" src="img/bouquet-13-800.webp" srcset="img/bouquet-13-400.webp 400w, img/bouquet-13-800.webp 800w" sizes="(min-width: 1024px) 290px, (min-width: 768px) 33vw, 50vw" width="800" height="1000" loading="lazy" alt="Букет «Пионовый вальс»: розовые пионы в стеклянной вазе">
               <div class="card__body">
                 <p class="card__badges"><span class="badge">Свадьба</span></p>
-                <h3 class="card__title">Белое облако</h3>
-                <p class="card__text">Белая гортензия</p>
-                <p class="card__price">6&nbsp;500&nbsp;₽</p>
-                <a class="btn btn--secondary" href="#order" data-bouquet="Белое облако" aria-label="Заказать букет «Белое облако»">Заказать</a>
+                <h3 class="card__title">Пионовый вальс</h3>
+                <p class="card__text">Розовые пионы</p>
+                <p class="card__price">5&nbsp;400&nbsp;₽</p>
+                <button class="btn btn--secondary js-only" type="button" data-add aria-label="В корзину: «Пионовый вальс»">В корзину</button>
+                <a class="btn btn--secondary nojs-only" href="#order">Заказать</a>
               </div>
             </article>
           </li>
-          <li class="catalog__item" data-occasion="birthday">
-            <article class="card card--lift">
-              <img class="card__media" src="img/bouquet-4-800.webp" srcset="img/bouquet-4-400.webp 400w, img/bouquet-4-800.webp 800w" sizes="(min-width: 1024px) 290px, (min-width: 768px) 33vw, 50vw" width="800" height="1000" loading="lazy" alt="Букет «Сливочный закат»: персиковые пионовидные розы, белые розы и гладиолусы">
-              <div class="card__body">
-                <p class="card__badges"><span class="badge">День рождения</span></p>
-                <h3 class="card__title">Сливочный закат</h3>
-                <p class="card__text">Пионовидные розы, белые розы, гладиолус</p>
-                <p class="card__price">4&nbsp;600&nbsp;₽</p>
-                <a class="btn btn--secondary" href="#order" data-bouquet="Сливочный закат" aria-label="Заказать букет «Сливочный закат»">Заказать</a>
-              </div>
-            </article>
-          </li>
-          <li class="catalog__item" data-occasion="anytime">
+          <li class="catalog__item" data-product="temnaya-vishnya" data-name="Тёмная вишня" data-price="5200" data-occasion="anytime" data-type="mono">
             <article class="card card--lift">
               <img class="card__media" src="img/bouquet-5-800.webp" srcset="img/bouquet-5-400.webp 400w, img/bouquet-5-800.webp 800w" sizes="(min-width: 1024px) 290px, (min-width: 768px) 33vw, 50vw" width="800" height="1000" loading="lazy" alt="Букет «Тёмная вишня»: тёмно-красные розы в прозрачной упаковке">
               <div class="card__body">
@@ -180,35 +217,51 @@
                 <h3 class="card__title">Тёмная вишня</h3>
                 <p class="card__text">Красные розы</p>
                 <p class="card__price">5&nbsp;200&nbsp;₽</p>
-                <a class="btn btn--secondary" href="#order" data-bouquet="Тёмная вишня" aria-label="Заказать букет «Тёмная вишня»">Заказать</a>
+                <button class="btn btn--secondary js-only" type="button" data-add aria-label="В корзину: «Тёмная вишня»">В корзину</button>
+                <a class="btn btn--secondary nojs-only" href="#order">Заказать</a>
               </div>
             </article>
           </li>
-          <li class="catalog__item" data-occasion="wedding">
+          <li class="catalog__item" data-product="solnechny-den" data-name="Солнечный день" data-price="2700" data-occasion="anytime" data-type="mono">
             <article class="card card--lift">
-              <img class="card__media" src="img/bouquet-6-800.webp" srcset="img/bouquet-6-400.webp 400w, img/bouquet-6-800.webp 800w" sizes="(min-width: 1024px) 290px, (min-width: 768px) 33vw, 50vw" width="800" height="1000" loading="lazy" alt="Букет «Первый снег»: каскадный свадебный букет из белых роз и зелени">
-              <div class="card__body">
-                <p class="card__badges"><span class="badge">Свадьба</span></p>
-                <h3 class="card__title">Первый снег</h3>
-                <p class="card__text">Белые розы, зелень, каскад</p>
-                <p class="card__price">7&nbsp;800&nbsp;₽</p>
-                <a class="btn btn--secondary" href="#order" data-bouquet="Первый снег" aria-label="Заказать букет «Первый снег»">Заказать</a>
-              </div>
-            </article>
-          </li>
-          <li class="catalog__item" data-occasion="anytime">
-            <article class="card card--lift">
-              <img class="card__media" src="img/bouquet-7-800.webp" srcset="img/bouquet-7-400.webp 400w, img/bouquet-7-800.webp 800w" sizes="(min-width: 1024px) 290px, (min-width: 768px) 33vw, 50vw" width="800" height="1000" loading="lazy" alt="Букет «Лимонный чай»: кремовые розы с зеленью в шляпной коробке">
+              <img class="card__media" src="img/bouquet-11-800.webp" srcset="img/bouquet-11-400.webp 400w, img/bouquet-11-800.webp 800w" sizes="(min-width: 1024px) 290px, (min-width: 768px) 33vw, 50vw" width="800" height="1000" loading="lazy" alt="Букет «Солнечный день»: подсолнухи с зеленью в руке">
               <div class="card__body">
                 <p class="card__badges"><span class="badge">Без повода</span></p>
-                <h3 class="card__title">Лимонный чай</h3>
-                <p class="card__text">Кремовые розы, зелень, коробка</p>
-                <p class="card__price">2&nbsp;400&nbsp;₽</p>
-                <a class="btn btn--secondary" href="#order" data-bouquet="Лимонный чай" aria-label="Заказать букет «Лимонный чай»">Заказать</a>
+                <h3 class="card__title">Солнечный день</h3>
+                <p class="card__text">Подсолнухи, зелень</p>
+                <p class="card__price">2&nbsp;700&nbsp;₽</p>
+                <button class="btn btn--secondary js-only" type="button" data-add aria-label="В корзину: «Солнечный день»">В корзину</button>
+                <a class="btn btn--secondary nojs-only" href="#order">Заказать</a>
               </div>
             </article>
           </li>
-          <li class="catalog__item" data-occasion="birthday">
+          <li class="catalog__item" data-product="slivochny-zakat" data-name="Сливочный закат" data-price="4600" data-occasion="birthday" data-type="bouquet">
+            <article class="card card--lift">
+              <img class="card__media" src="img/bouquet-4-800.webp" srcset="img/bouquet-4-400.webp 400w, img/bouquet-4-800.webp 800w" sizes="(min-width: 1024px) 290px, (min-width: 768px) 33vw, 50vw" width="800" height="1000" loading="lazy" alt="Букет «Сливочный закат»: персиковые пионовидные розы, белые розы и гладиолусы">
+              <div class="card__body">
+                <p class="card__badges"><span class="badge">День рождения</span></p>
+                <h3 class="card__title">Сливочный закат</h3>
+                <p class="card__text">Пионовидные розы, белые розы, гладиолус</p>
+                <p class="card__price">4&nbsp;600&nbsp;₽</p>
+                <button class="btn btn--secondary js-only" type="button" data-add aria-label="В корзину: «Сливочный закат»">В корзину</button>
+                <a class="btn btn--secondary nojs-only" href="#order">Заказать</a>
+              </div>
+            </article>
+          </li>
+          <li class="catalog__item" data-product="letnyaya-korzina" data-name="Летняя корзина" data-price="7900" data-occasion="birthday" data-type="box">
+            <article class="card card--lift">
+              <img class="card__media" src="img/bouquet-14-800.webp" srcset="img/bouquet-14-400.webp 400w, img/bouquet-14-800.webp 800w" sizes="(min-width: 1024px) 290px, (min-width: 768px) 33vw, 50vw" width="800" height="1000" loading="lazy" alt="Корзина «Летняя корзина»: розовые и красные розы в плетёной корзине">
+              <div class="card__body">
+                <p class="card__badges"><span class="badge">День рождения</span></p>
+                <h3 class="card__title">Летняя корзина</h3>
+                <p class="card__text">Розы, плетёная корзина</p>
+                <p class="card__price">7&nbsp;900&nbsp;₽</p>
+                <button class="btn btn--secondary js-only" type="button" data-add aria-label="В корзину: «Летняя корзина»">В корзину</button>
+                <a class="btn btn--secondary nojs-only" href="#order">Заказать</a>
+              </div>
+            </article>
+          </li>
+          <li class="catalog__item" data-product="pudrovy-vecher" data-name="Пудровый вечер" data-price="3400" data-occasion="birthday" data-type="bouquet">
             <article class="card card--lift">
               <img class="card__media" src="img/bouquet-8-800.webp" srcset="img/bouquet-8-400.webp 400w, img/bouquet-8-800.webp 800w" sizes="(min-width: 1024px) 290px, (min-width: 768px) 33vw, 50vw" width="800" height="1000" loading="lazy" alt="Букет «Пудровый вечер»: розовые розы с гипсофилой в розовой упаковке">
               <div class="card__body">
@@ -216,13 +269,108 @@
                 <h3 class="card__title">Пудровый вечер</h3>
                 <p class="card__text">Розовые розы, гипсофила</p>
                 <p class="card__price">3&nbsp;400&nbsp;₽</p>
-                <a class="btn btn--secondary" href="#order" data-bouquet="Пудровый вечер" aria-label="Заказать букет «Пудровый вечер»">Заказать</a>
+                <button class="btn btn--secondary js-only" type="button" data-add aria-label="В корзину: «Пудровый вечер»">В корзину</button>
+                <a class="btn btn--secondary nojs-only" href="#order">Заказать</a>
+              </div>
+            </article>
+          </li>
+          <li class="catalog__item" data-product="vesennie-tyulpany" data-name="Весенние тюльпаны" data-price="2200" data-occasion="anytime" data-type="mono">
+            <article class="card card--lift">
+              <img class="card__media" src="img/bouquet-12-800.webp" srcset="img/bouquet-12-400.webp 400w, img/bouquet-12-800.webp 800w" sizes="(min-width: 1024px) 290px, (min-width: 768px) 33vw, 50vw" width="800" height="1000" loading="lazy" alt="Букет «Весенние тюльпаны»: розовые тюльпаны в стеклянной вазе">
+              <div class="card__body">
+                <p class="card__badges"><span class="badge">Без повода</span></p>
+                <h3 class="card__title">Весенние тюльпаны</h3>
+                <p class="card__text">15 розовых тюльпанов</p>
+                <p class="card__price">2&nbsp;200&nbsp;₽</p>
+                <button class="btn btn--secondary js-only" type="button" data-add aria-label="В корзину: «Весенние тюльпаны»">В корзину</button>
+                <a class="btn btn--secondary nojs-only" href="#order">Заказать</a>
+              </div>
+            </article>
+          </li>
+          <li class="catalog__item" data-product="beloe-oblako" data-name="Белое облако" data-price="6500" data-occasion="wedding" data-type="mono">
+            <article class="card card--lift">
+              <img class="card__media" src="img/bouquet-3-800.webp" srcset="img/bouquet-3-400.webp 400w, img/bouquet-3-800.webp 800w" sizes="(min-width: 1024px) 290px, (min-width: 768px) 33vw, 50vw" width="800" height="1000" loading="lazy" alt="Букет «Белое облако»: белая гортензия в жестяной кружке">
+              <div class="card__body">
+                <p class="card__badges"><span class="badge">Свадьба</span></p>
+                <h3 class="card__title">Белое облако</h3>
+                <p class="card__text">Белая гортензия</p>
+                <p class="card__price">6&nbsp;500&nbsp;₽</p>
+                <button class="btn btn--secondary js-only" type="button" data-add aria-label="В корзину: «Белое облако»">В корзину</button>
+                <a class="btn btn--secondary nojs-only" href="#order">Заказать</a>
+              </div>
+            </article>
+          </li>
+          <li class="catalog__item" data-product="sad-v-korobke" data-name="Сад в коробке" data-price="6800" data-occasion="anytime" data-type="box">
+            <article class="card card--lift">
+              <img class="card__media" src="img/bouquet-10-800.webp" srcset="img/bouquet-10-400.webp 400w, img/bouquet-10-800.webp 800w" sizes="(min-width: 1024px) 290px, (min-width: 768px) 33vw, 50vw" width="800" height="1000" loading="lazy" alt="Композиция «Сад в коробке»: лиловые и розовые садовые розы с зеленью в чёрной коробке">
+              <div class="card__body">
+                <p class="card__badges"><span class="badge">Без повода</span></p>
+                <h3 class="card__title">Сад в коробке</h3>
+                <p class="card__text">Садовые розы, эвкалипт, коробка</p>
+                <p class="card__price">6&nbsp;800&nbsp;₽</p>
+                <button class="btn btn--secondary js-only" type="button" data-add aria-label="В корзину: «Сад в коробке»">В корзину</button>
+                <a class="btn btn--secondary nojs-only" href="#order">Заказать</a>
+              </div>
+            </article>
+          </li>
+          <li class="catalog__item" data-product="perviy-sneg" data-name="Первый снег" data-price="7800" data-occasion="wedding" data-type="bouquet">
+            <article class="card card--lift">
+              <img class="card__media" src="img/bouquet-6-800.webp" srcset="img/bouquet-6-400.webp 400w, img/bouquet-6-800.webp 800w" sizes="(min-width: 1024px) 290px, (min-width: 768px) 33vw, 50vw" width="800" height="1000" loading="lazy" alt="Букет «Первый снег»: каскадный свадебный букет из белых роз и зелени">
+              <div class="card__body">
+                <p class="card__badges"><span class="badge">Свадьба</span></p>
+                <h3 class="card__title">Первый снег</h3>
+                <p class="card__text">Белые розы, зелень, каскад</p>
+                <p class="card__price">7&nbsp;800&nbsp;₽</p>
+                <button class="btn btn--secondary js-only" type="button" data-add aria-label="В корзину: «Первый снег»">В корзину</button>
+                <a class="btn btn--secondary nojs-only" href="#order">Заказать</a>
+              </div>
+            </article>
+          </li>
+          <li class="catalog__item" data-product="vechny-iyul" data-name="Вечный июль" data-price="3200" data-occasion="anytime" data-type="bouquet">
+            <article class="card card--lift">
+              <img class="card__media" src="img/bouquet-15-800.webp" srcset="img/bouquet-15-400.webp 400w, img/bouquet-15-800.webp 800w" sizes="(min-width: 1024px) 290px, (min-width: 768px) 33vw, 50vw" width="800" height="1000" loading="lazy" alt="Букет «Вечный июль»: сухоцветы в белой бумаге с лентой">
+              <div class="card__body">
+                <p class="card__badges"><span class="badge">Без повода</span> <span class="badge badge--solid">Новинка</span></p>
+                <h3 class="card__title">Вечный июль</h3>
+                <p class="card__text">Сухоцветы, стоит до года</p>
+                <p class="card__price">3&nbsp;200&nbsp;₽</p>
+                <button class="btn btn--secondary js-only" type="button" data-add aria-label="В корзину: «Вечный июль»">В корзину</button>
+                <a class="btn btn--secondary nojs-only" href="#order">Заказать</a>
+              </div>
+            </article>
+          </li>
+          <li class="catalog__item" data-product="limonny-chay" data-name="Лимонный чай" data-price="4300" data-occasion="anytime" data-type="box">
+            <article class="card card--lift">
+              <img class="card__media" src="img/bouquet-7-800.webp" srcset="img/bouquet-7-400.webp 400w, img/bouquet-7-800.webp 800w" sizes="(min-width: 1024px) 290px, (min-width: 768px) 33vw, 50vw" width="800" height="1000" loading="lazy" alt="Композиция «Лимонный чай»: кремовые розы с зеленью в шляпной коробке">
+              <div class="card__body">
+                <p class="card__badges"><span class="badge">Без повода</span></p>
+                <h3 class="card__title">Лимонный чай</h3>
+                <p class="card__text">Кремовые розы, зелень, коробка</p>
+                <p class="card__price">4&nbsp;300&nbsp;₽</p>
+                <button class="btn btn--secondary js-only" type="button" data-add aria-label="В корзину: «Лимонный чай»">В корзину</button>
+                <a class="btn btn--secondary nojs-only" href="#order">Заказать</a>
+              </div>
+            </article>
+          </li>
+          <li class="catalog__item" data-product="utrenniy-tuman" data-name="Утренний туман" data-price="4900" data-occasion="wedding" data-type="bouquet">
+            <article class="card card--lift">
+              <img class="card__media" src="img/bouquet-16-800.webp" srcset="img/bouquet-16-400.webp 400w, img/bouquet-16-800.webp 800w" sizes="(min-width: 1024px) 290px, (min-width: 768px) 33vw, 50vw" width="800" height="1000" loading="lazy" alt="Букет «Утренний туман»: белые розы с зеленью в руках">
+              <div class="card__body">
+                <p class="card__badges"><span class="badge">Свадьба</span></p>
+                <h3 class="card__title">Утренний туман</h3>
+                <p class="card__text">Белые розы, зелень</p>
+                <p class="card__price">4&nbsp;900&nbsp;₽</p>
+                <button class="btn btn--secondary js-only" type="button" data-add aria-label="В корзину: «Утренний туман»">В корзину</button>
+                <a class="btn btn--secondary nojs-only" href="#order">Заказать</a>
               </div>
             </article>
           </li>
         </ul>
         <p class="sr-only" role="status" data-catalog-status></p>
-        <p class="catalog__empty" hidden>В этом разделе пока нет букетов. Посмотрите «Все» или опишите, что хотите, в заявке.</p>
+        <p class="catalog__empty" hidden>С такими условиями букетов пока нет. Снимите один из фильтров или опишите, что хотите, в заявке.</p>
+        <div class="catalog__more js-only">
+          <button class="btn btn--secondary" type="button" data-more hidden>Показать ещё</button>
+        </div>
 
         <div class="catalog__custom">
           <p class="catalog__custom-text">Не нашли свой? Соберём букет по вашему описанию.</p>
@@ -231,7 +379,41 @@
       </div>
     </section>
 
-    <section class="section" id="how" aria-labelledby="how-title">
+    <section class="section" id="subscription" aria-labelledby="subscription-title">
+      <div class="container subscription">
+        <img class="subscription__image" src="img/subscription-1000.webp" srcset="img/subscription-600.webp 600w, img/subscription-1000.webp 1000w" sizes="(min-width: 1024px) 40vw, 100vw" width="1000" height="1250" loading="lazy" alt="Тюльпаны разных цветов в крафтовых пакетах на цветочном рынке">
+        <div class="subscription__content">
+          <div class="section__head">
+            <p class="eyebrow">Подписка</p>
+            <h2 id="subscription-title">Свежие цветы дома без напоминаний</h2>
+            <p class="lead">Флорист собирает сезонный букет и привозит в удобный вам день. Доставка входит в цену, пауза или отмена — одним сообщением.</p>
+          </div>
+          <ul class="plans">
+            <li class="plan">
+              <h3 class="plan__title">Раз в месяц</h3>
+              <p class="plan__price"><strong>3&nbsp;400&nbsp;₽</strong> за букет</p>
+              <p class="plan__text">Для себя или в подарок на месяц вперёд</p>
+              <a class="btn btn--secondary" href="#order" data-plan="Раз в месяц — 3 400 ₽ за букет" aria-label="Оформить подписку «Раз в месяц»">Оформить</a>
+            </li>
+            <li class="plan plan--featured">
+              <span class="badge badge--solid plan__badge">Чаще выбирают</span>
+              <h3 class="plan__title">Раз в две недели</h3>
+              <p class="plan__price"><strong>3&nbsp;200&nbsp;₽</strong> за букет</p>
+              <p class="plan__text">Цветы стоят дома почти всегда</p>
+              <a class="btn btn--primary" href="#order" data-plan="Раз в две недели — 3 200 ₽ за букет" aria-label="Оформить подписку «Раз в две недели»">Оформить</a>
+            </li>
+            <li class="plan">
+              <h3 class="plan__title">Каждую неделю</h3>
+              <p class="plan__price"><strong>2&nbsp;900&nbsp;₽</strong> за букет</p>
+              <p class="plan__text">Для кафе, офиса и тех, кто любит перемены</p>
+              <a class="btn btn--secondary" href="#order" data-plan="Каждую неделю — 2 900 ₽ за букет" aria-label="Оформить подписку «Каждую неделю»">Оформить</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="how" aria-labelledby="how-title">
       <div class="container">
         <div class="section__head">
           <p class="eyebrow">Как это работает</p>
@@ -254,7 +436,7 @@
       </div>
     </section>
 
-    <section class="section section--alt" id="about" aria-labelledby="about-title">
+    <section class="section" id="about" aria-labelledby="about-title">
       <div class="container about">
         <img class="about__image" src="img/about-1000.webp" srcset="img/about-600.webp 600w, img/about-1000.webp 1000w" sizes="(min-width: 768px) 45vw, 100vw" width="1000" height="1250" loading="lazy" alt="Флорист собирает букет с розовой гортензией">
         <div class="about__content">
@@ -270,7 +452,7 @@
       </div>
     </section>
 
-    <section class="section" id="reviews" aria-labelledby="reviews-title">
+    <section class="section section--alt" id="reviews" aria-labelledby="reviews-title">
       <div class="container">
         <div class="section__head">
           <p class="eyebrow">Отзывы</p>
@@ -284,26 +466,44 @@
           <ul class="reviews__list">
             <li class="reviews__item">
               <figure class="review">
+                <p class="review__rating"><span aria-hidden="true">★★★★★</span><span class="sr-only">Оценка 5 из 5</span></p>
                 <blockquote><p>Заказала маме на юбилей в другой город. Прислали фото, я попросила убрать лилии — переделали за 15 минут. Мама сказала, что это самый красивый букет за много лет.</p></blockquote>
-                <figcaption>Марина К., день рождения</figcaption>
+                <figcaption class="review__author"><span class="avatar" aria-hidden="true">МК</span><span>Марина К.<span class="review__meta">день рождения</span></span></figcaption>
               </figure>
             </li>
             <li class="reviews__item">
               <figure class="review">
+                <p class="review__rating"><span aria-hidden="true">★★★★★</span><span class="sr-only">Оценка 5 из 5</span></p>
+                <blockquote><p>Оформила подписку раз в две недели для офиса. Букеты ни разу не повторились, коллеги теперь спрашивают, когда следующий.</p></blockquote>
+                <figcaption class="review__author"><span class="avatar" aria-hidden="true">СВ</span><span>Светлана В.<span class="review__meta">подписка</span></span></figcaption>
+              </figure>
+            </li>
+            <li class="reviews__item">
+              <figure class="review">
+                <p class="review__rating"><span aria-hidden="true">★★★★★</span><span class="sr-only">Оценка 5 из 5</span></p>
                 <blockquote><p>Букет простоял девять дней. Обычно я выбрасываю цветы через четыре.</p></blockquote>
-                <figcaption>Андрей С., без повода</figcaption>
+                <figcaption class="review__author"><span class="avatar" aria-hidden="true">АС</span><span>Андрей С.<span class="review__meta">без повода</span></span></figcaption>
               </figure>
             </li>
             <li class="reviews__item">
               <figure class="review">
+                <p class="review__rating"><span aria-hidden="true">★★★★★</span><span class="sr-only">Оценка 5 из 5</span></p>
                 <blockquote><p>Делали букет невесты и бутоньерки. Цвета совпали с платьем до оттенка, всё привезли за час до выхода.</p></blockquote>
-                <figcaption>Ольга и Дмитрий, свадьба</figcaption>
+                <figcaption class="review__author"><span class="avatar" aria-hidden="true">ОД</span><span>Ольга и Дмитрий<span class="review__meta">свадьба</span></span></figcaption>
               </figure>
             </li>
             <li class="reviews__item">
               <figure class="review">
+                <p class="review__rating"><span aria-hidden="true">★★★★★</span><span class="sr-only">Оценка 5 из 5</span></p>
+                <blockquote><p>Брал «Розовую шкатулку» на годовщину. Розы стояли больше недели, а коробку жена оставила для мелочей.</p></blockquote>
+                <figcaption class="review__author"><span class="avatar" aria-hidden="true">ПН</span><span>Павел Н.<span class="review__meta">годовщина</span></span></figcaption>
+              </figure>
+            </li>
+            <li class="reviews__item">
+              <figure class="review">
+                <p class="review__rating"><span aria-hidden="true">★★★★★</span><span class="sr-only">Оценка 5 из 5</span></p>
                 <blockquote><p>Курьер приехал за 70 минут и позвонил за пять минут до этого. Получатель был дома, сюрприз удался.</p></blockquote>
-                <figcaption>Игорь П., без повода</figcaption>
+                <figcaption class="review__author"><span class="avatar" aria-hidden="true">ИП</span><span>Игорь П.<span class="review__meta">без повода</span></span></figcaption>
               </figure>
             </li>
           </ul>
@@ -311,7 +511,7 @@
       </div>
     </section>
 
-    <section class="section section--alt" id="delivery" aria-labelledby="delivery-title">
+    <section class="section" id="delivery" aria-labelledby="delivery-title">
       <div class="container">
         <div class="section__head">
           <p class="eyebrow">Доставка и оплата</p>
@@ -347,12 +547,12 @@
       </div>
     </section>
 
-    <section class="section" id="contacts" aria-labelledby="contacts-title">
+    <section class="section section--alt" id="contacts" aria-labelledby="contacts-title">
       <div class="container contacts">
         <div class="contacts__info">
           <p class="eyebrow">Заказ</p>
           <h2 id="contacts-title">Оставьте заявку, мы перезвоним</h2>
-          <p class="lead">Ответим в течение 10 минут, пока студия работает: ежедневно с 8:00 до 22:00.</p>
+          <p class="lead">Проверьте состав заказа и оставьте телефон. Перезвоним в течение 10 минут, пока студия работает: ежедневно с 8:00 до 22:00. Оплата после подтверждения.</p>
           <h3 class="contacts__heading">Контакты</h3>
           <address class="contacts__list">
             <p><span class="contacts__label">Адрес</span> Москва, ул. Цветочная, 12. Вход со двора, вывеска «Хлорис»</p>
@@ -365,6 +565,22 @@
 
         <div class="contacts__form">
           <form class="order-form" id="order" method="post">
+            <div class="order-summary js-only" data-order-summary>
+              <p class="order-summary__title">Ваш заказ</p>
+              <ul class="order-summary__list" data-summary-list></ul>
+              <p class="order-summary__empty" data-summary-empty>Корзина пуста. Выберите букет в <a href="#catalog">каталоге</a> или опишите в комментарии, какой собрать.</p>
+              <dl class="totals" data-summary-totals>
+                <div><dt>Букеты и дополнения</dt><dd data-summary-subtotal></dd></div>
+                <div><dt>Доставка</dt><dd data-summary-delivery></dd></div>
+                <div class="totals__total"><dt>Итого</dt><dd data-summary-total></dd></div>
+              </dl>
+              <button class="link-btn" type="button" data-open-cart>Изменить заказ</button>
+            </div>
+            <fieldset class="choice-group">
+              <legend class="field__label">Как получить</legend>
+              <label class="choice"><input type="radio" name="delivery" value="delivery" checked> <span><strong>Курьером</strong> <small>350 ₽, от 5 000 ₽ бесплатно, за 90 минут</small></span></label>
+              <label class="choice"><input type="radio" name="delivery" value="pickup"> <span><strong>Самовывоз</strong> <small>бесплатно, ул. Цветочная, 12, через 30 минут</small></span></label>
+            </fieldset>
             <div class="field">
               <label class="field__label" for="order-name">Ваше имя</label>
               <input class="field__input" id="order-name" name="name" type="text" autocomplete="name" placeholder="Анна" required aria-describedby="order-name-error">
@@ -377,20 +593,6 @@
               <p class="field__error" id="order-phone-error" hidden></p>
             </div>
             <div class="field">
-              <label class="field__label" for="order-bouquet">Букет</label>
-              <select class="field__input" id="order-bouquet" name="bouquet">
-                <option value="">Выберу вместе с флористом</option>
-                <option>Нежное утро</option>
-                <option>Летний луг</option>
-                <option>Белое облако</option>
-                <option>Сливочный закат</option>
-                <option>Тёмная вишня</option>
-                <option>Первый снег</option>
-                <option>Лимонный чай</option>
-                <option>Пудровый вечер</option>
-              </select>
-            </div>
-            <div class="field">
               <label class="field__label" for="order-comment">Комментарий</label>
               <textarea class="field__input" id="order-comment" name="comment" rows="4" placeholder="Адрес, повод, любимые цвета" aria-describedby="order-comment-hint order-comment-error"></textarea>
               <p class="field__hint" id="order-comment-hint">Необязательно, всё уточним по телефону</p>
@@ -401,8 +603,9 @@
             <p class="field__error order-form__fail" role="alert" hidden>Не получилось отправить заявку. Проверьте интернет и попробуйте ещё раз или позвоните нам: <a href="tel:+70000000000">+7 (000) 000-00-00</a>.</p>
           </form>
           <div class="order-success" role="status" tabindex="-1" hidden>
-            <h3 class="order-success__title">Заявка принята</h3>
+            <h3 class="order-success__title" data-success-title>Заявка принята</h3>
             <p>Спасибо, <span data-name></span>! Перезвоним на <span data-phone></span> в течение 10 минут. Если вы написали ночью, перезвоним утром после 8:00.</p>
+            <p data-success-total hidden></p>
           </div>
         </div>
       </div>
@@ -415,6 +618,7 @@
       <nav aria-label="Меню в подвале">
         <ul class="nav__list">
           <li><a href="#catalog">Каталог</a></li>
+          <li><a href="#subscription">Подписка</a></li>
           <li><a href="#how">Как это работает</a></li>
           <li><a href="#about">О нас</a></li>
           <li><a href="#reviews">Отзывы</a></li>
@@ -426,7 +630,62 @@
     </div>
   </footer>
 
+  <dialog class="cart" id="cart" aria-labelledby="cart-title">
+    <div class="cart__inner">
+      <div class="cart__head">
+        <h2 class="cart__title" id="cart-title">Корзина</h2>
+        <button class="cart__close" type="button" data-close-cart aria-label="Закрыть корзину">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <div class="cart__body">
+        <div class="cart__empty" data-cart-empty>
+          <p>В корзине пока пусто. В каталоге 16 букетов и композиций — выберите свой или опишите, какой собрать, в заявке.</p>
+          <a class="btn btn--secondary" href="#catalog" data-close-cart>В каталог</a>
+        </div>
+        <ul class="cart__list" data-cart-list></ul>
+        <fieldset class="cart__addons" data-cart-filled>
+          <legend>Добавить к заказу</legend>
+          <label class="addon"><input type="checkbox" data-product="addon-card" data-name="Открытка с вашим текстом" data-price="150"> <span>Открытка с вашим текстом</span> <span class="addon__price">150&nbsp;₽</span></label>
+          <label class="addon"><input type="checkbox" data-product="addon-vase" data-name="Стеклянная ваза" data-price="900"> <span>Стеклянная ваза</span> <span class="addon__price">900&nbsp;₽</span></label>
+          <label class="addon"><input type="checkbox" data-product="addon-sweets" data-name="Конфеты ручной работы" data-price="650"> <span>Конфеты ручной работы</span> <span class="addon__price">650&nbsp;₽</span></label>
+        </fieldset>
+      </div>
+      <div class="cart__foot" data-cart-filled>
+        <p class="cart__free" data-cart-free></p>
+        <div class="progress" aria-hidden="true"><span data-cart-progress></span></div>
+        <dl class="totals">
+          <div><dt>Букеты и дополнения</dt><dd data-cart-subtotal></dd></div>
+          <div><dt>Доставка курьером</dt><dd data-cart-delivery></dd></div>
+          <div class="totals__total"><dt>Итого</dt><dd data-cart-total></dd></div>
+        </dl>
+        <a class="btn btn--primary btn--lg" href="#order" data-close-cart>Оформить заказ</a>
+      </div>
+    </div>
+  </dialog>
+
+  <template id="cart-row">
+    <li class="cart-row">
+      <img class="cart-row__img" width="64" height="80" alt="">
+      <div class="cart-row__info">
+        <p class="cart-row__name"></p>
+        <p class="cart-row__price"></p>
+      </div>
+      <div class="cart-row__controls">
+        <div class="qty" role="group">
+          <button class="qty__btn" type="button" data-step="-1">−</button>
+          <span class="qty__value"></span>
+          <button class="qty__btn" type="button" data-step="1">+</button>
+        </div>
+        <button class="cart-row__remove" type="button">Удалить</button>
+      </div>
+    </li>
+  </template>
+
+  <div class="toast" role="status" data-toast></div>
+
   <script src="js/validate.js" defer></script>
+  <script src="js/cart.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>
 </html>

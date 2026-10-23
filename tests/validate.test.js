@@ -17,6 +17,12 @@ test('phone: нужны 11 цифр, первая 7 или 8, формат не 
   assert.equal(validators.phone('89001234567'), '');
 });
 
+test('emptyOrder: нужен букет в корзине или комментарий', () => {
+  assert.match(validators.emptyOrder(0, '  '), /Добавьте букет/);
+  assert.equal(validators.emptyOrder(2, ''), '');
+  assert.equal(validators.emptyOrder(0, 'Соберите белый букет'), '');
+});
+
 test('comment: до 500 знаков включительно', () => {
   assert.equal(validators.comment(''), '');
   assert.equal(validators.comment('а'.repeat(500)), '');
