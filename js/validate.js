@@ -8,6 +8,8 @@ const validators = {
     return /^[78]\d{10}$/.test(digits) ? '' : 'Проверьте номер: нужны 11 цифр, например +7 000 000-00-00';
   },
   comment: (value) => (value.length <= 500 ? '' : `Сократите комментарий до 500 символов, сейчас ${value.length}`),
+  // не поле формы: заказ пустой, если в корзине ничего нет и комментарий не заполнен
+  emptyOrder: (cartCount, comment) => (cartCount || comment.trim() ? '' : 'Добавьте букет в корзину или опишите в комментарии, какой собрать'),
 };
 
 if (typeof module !== 'undefined') module.exports = validators;
