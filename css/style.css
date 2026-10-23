@@ -3,6 +3,48 @@
   Брейкпоинты (в @media переменные недоступны), mobile-first: 480 / 768 / 1024 / 1280 px.
 */
 
+/* Шрифты лежат на своём сервере (SIL OFL): без цепочки запросов к Google и с предзагрузкой из index.html */
+@font-face {
+  font-family: "Cormorant Garamond"; font-style: italic; font-weight: 500; font-display: swap;
+  src: url("../fonts/cormorant-italic-cyrillic.woff2") format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "Cormorant Garamond"; font-style: italic; font-weight: 500; font-display: swap;
+  src: url("../fonts/cormorant-italic-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Cormorant Garamond"; font-style: normal; font-weight: 500 600; font-display: swap;
+  src: url("../fonts/cormorant-cyrillic.woff2") format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "Cormorant Garamond"; font-style: normal; font-weight: 500 600; font-display: swap;
+  src: url("../fonts/cormorant-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Manrope"; font-style: normal; font-weight: 400 700; font-display: swap;
+  src: url("../fonts/manrope-cyrillic.woff2") format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "Manrope"; font-style: normal; font-weight: 400 700; font-display: swap;
+  src: url("../fonts/manrope-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Manrope"; font-style: normal; font-weight: 400 700; font-display: swap;
+  src: url("../fonts/manrope-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1E9F, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113;
+}
+/* Запасные шрифты с подогнанными метриками: пока грузятся настоящие, текст занимает столько же места и не прыгает (CLS) */
+@font-face { font-family: "Cormorant Fallback"; font-weight: 400 500; src: local("Georgia"); size-adjust: 86.11%; ascent-override: 106.84%; descent-override: 33.68%; line-gap-override: 0%; }
+@font-face { font-family: "Cormorant Fallback"; font-weight: 600 700; src: local("Georgia Bold"), local("Georgia-Bold"); size-adjust: 75.03%; ascent-override: 122.61%; descent-override: 38.65%; line-gap-override: 0%; }
+@font-face { font-family: "Manrope Fallback"; font-weight: 400 500; src: local("Arial"); size-adjust: 102.09%; ascent-override: 104.81%; descent-override: 29.38%; line-gap-override: 0%; }
+@font-face { font-family: "Manrope Fallback"; font-weight: 600 700; src: local("Arial Bold"), local("Arial-BoldMT"); size-adjust: 97.87%; ascent-override: 109.33%; descent-override: 30.65%; line-gap-override: 0%; }
+
 :root {
   /* Цвет. Пары «текст/фон» проверены на WCAG AA, значения контраста — в styleguide.html */
   --color-bg: #FBF7F2;
@@ -25,8 +67,8 @@
   --color-focus: var(--color-primary);
 
   /* Типографика */
-  --font-display: "Cormorant Garamond", Georgia, serif;
-  --font-body: "Manrope", system-ui, sans-serif;
+  --font-display: "Cormorant Garamond", "Cormorant Fallback", Georgia, serif;
+  --font-body: "Manrope", "Manrope Fallback", system-ui, sans-serif;
   --text-sm: 0.875rem;
   --text-base: 1rem;
   --text-lg: 1.125rem;
@@ -468,6 +510,7 @@ p a { color: var(--color-primary); text-underline-offset: 0.2em; }
 
 /* Главный экран: коллаж и плашка «Привезём сегодня» */
 .hero__media { position: relative; }
+.hero__media picture { display: block; }
 .hero__inset {
   position: absolute; left: var(--space-3); bottom: var(--space-3); width: 28%; height: auto; aspect-ratio: 1;
   object-fit: cover; border: 5px solid var(--color-bg); border-radius: 50%; box-shadow: var(--shadow-md);
